@@ -7,17 +7,22 @@
 
 import SwiftUI
 
+class ActivityViewCustomActivity: UIActivity{
+    
+}
+
 struct ContentView: View {
+    @State private var isSharePresented = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Button("Share") {
+            self.isSharePresented = true
+        }.sheet(isPresented: $isSharePresented) {
+            ActivityView(activityItems: ["message test"])
         }
-        .padding()
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
